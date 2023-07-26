@@ -16,6 +16,6 @@ public class SortService {
 
   private static String extractLastName(String fullName) {
     String[] nameParts = fullName.split(" ");
-    return nameParts.length == 1 ? nameParts[0] : nameParts[nameParts.length - 1];
+    return nameParts[nameParts.length - 1];
   }
 }
