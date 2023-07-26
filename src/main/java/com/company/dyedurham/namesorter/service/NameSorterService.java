@@ -25,13 +25,12 @@ public class NameSorterService {
     List<String> sortedNames;
 
     String lines;
-    // call read file method and pass the filename from arguments.
     try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
       while ((lines = bufferedReader.readLine()) != null) {
-        if (lines.isEmpty() || lines.isBlank()) {
-          throw new IllegalArgumentException("Name cannot be empty or blank.");
-        }
         unsortedNames.add(lines);
+      }
+      if (unsortedNames.isEmpty()) {
+        throw new IllegalArgumentException("Name cannot be empty or blank.");
       }
     }
     sortedNames = sortService.sortNamesByLastName(unsortedNames);

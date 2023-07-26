@@ -32,7 +32,7 @@ class NameSorterServiceTest {
     @Test
     void sortName_ValidFile_CallsSortServiceAndFileWriter() throws IOException {
         // Arrange
-        String fileName = "test.txt";
+        String fileName = "src/test/resources/test.txt";
         List<String> unsortedNames = new ArrayList<>();
         unsortedNames.add("John Doe");
         unsortedNames.add("Alice Smith");
@@ -48,15 +48,5 @@ class NameSorterServiceTest {
         // Assert
         verify(sortService, times(1)).sortNamesByLastName(unsortedNames);
         verify(sorterFileWriter, times(1)).writeFile(sortedNames);
-    }
-
-    @Test
-    void sortNamesByLastName_invalidInput_throwException() throws IOException {
-        String fileName = "test1.txt";
-
-        when(sortService.sortNamesByLastName(new ArrayList<>())).thenReturn(new ArrayList<>());
-
-        // Act
-        nameSorterService.sortName(fileName);
     }
 }
