@@ -36,6 +36,10 @@ and a file in the working directory called sorted-names-list.txt containing the 
 # Technologies Used
 Java, Spring Boot, Maven
 
+# Pre-requisites
+- Make sure you have Java version 11 installed in your system
+- Maven 3.9.1 version installed
+
 # Command to run the application
 - mvn package
 - java -jar target/NameSorter-1.0.0-SNAPSHOT.jar unsorted-names-list.txt
