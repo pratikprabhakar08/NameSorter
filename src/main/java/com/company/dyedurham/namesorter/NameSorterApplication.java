@@ -10,7 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class NameSorterApplication implements CommandLineRunner {
 
 	@Autowired
-	private NameSorterService nameSorterService;
+	private final NameSorterService nameSorterService;
+
+	public NameSorterApplication(NameSorterService nameSorterService) {
+		this.nameSorterService = nameSorterService;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(NameSorterApplication.class, args);
@@ -18,6 +22,6 @@ public class NameSorterApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		nameSorterService.sortName(args[0]);
+		this.nameSorterService.sortName(args[0]);
 	}
 }

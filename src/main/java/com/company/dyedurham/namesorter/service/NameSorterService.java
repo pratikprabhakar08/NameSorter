@@ -15,10 +15,11 @@ import org.springframework.stereotype.Service;
 public class NameSorterService {
 
   @Autowired
-  private NameSorterFileWriter sorterFileWriter;
+  private final SortService sortService;
 
-  @Autowired
-  private SortService sortService;
+  public NameSorterService(SortService sortService) {
+    this.sortService = sortService;
+  }
 
   public void sortName(String fileName) throws IOException {
     List<String> unsortedNames = new ArrayList<>();
@@ -33,7 +34,7 @@ public class NameSorterService {
         throw new IllegalArgumentException("Name cannot be empty or blank.");
       }
     }
-    sortedNames = sortService.sortNamesByLastName(unsortedNames);
+    sortedNames = this.sortService.sortNamesByLastName(unsortedNames);
 
     // Write sorted names to the file
     try {
